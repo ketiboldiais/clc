@@ -1,34 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CLC
 
-## Getting Started
+This is a simple calculator using CSMParse to parse and evaluate mathematical expressions.
 
-First, run the development server:
+## DEL
+The `DEL` button removes the last inserted _character_, rather than 
+the last inserted _token_. Thus, inputting `cos(1)` and entering `DEL` will return `cos(1` rather.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## CLEAR
+The `CLEAR` button reset all input.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Operations
+From an abstract algebra perspective, the operations ${/,}$ ${\times,}$ ${+,}$ and ${-}$ are functions, just as ${\sin,}$ ${\cos,}$ and ${\tan}$ are. Unfortunately, these operations came long before we found set theory, so we have inconsistency — we use infix for some operations (${a+b}$), prefix for others (${\cos x}$), postfix elsewhere (${n!}$), and strange hybrids still (${\lvert x \rvert}$). This is becomes a mess when it comes to parsing, and a full implementation of all the nuances of mathematical notation comes at the cost of efficiency.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+As such, CLC only implements prefix and infix notations. Thus, ${\sqrt{x}}$ becomes ${\text{sqrt}(x),}$ and ${\tan x}$ becomes ${\tan(x).}$ When a traditionally prefix or hybrid operation is entered (e.g., ${\ln x}$ or ${\lvert x \rvert}$), the parser will return ${\text{f}(.}$ The parameter list _must be_ closed with a right parenthesis for evaluation to complete.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
