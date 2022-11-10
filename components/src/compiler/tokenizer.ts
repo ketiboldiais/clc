@@ -4,12 +4,19 @@ import { Token, TokenObj, TokenType } from "./token";
 
 export class TOKENIZER {
 	scanner: SCANNER;
-	leftBracketCount: number;
-	rightBracketCount: number;
-	scan: Scan;
+	scan: Scan | any;
 	tokenList: TokenObj[];
 	tokenLength: number;
 	asLatex: boolean;
+	
+	constructor() {
+		this.scanner = new SCANNER();
+		this.scan = [];
+		this.tokenList = this.scan.tokens;
+		this.tokenLength = this.tokenList.length;
+		this.asLatex = false;
+	}
+	
 
 	init(source: string, latex: boolean) {
 		this.scanner = new SCANNER();
@@ -63,9 +70,9 @@ export class TOKENIZER {
 		}
 		return cleanedTokens;
 	}
-	private tokenizeArrays() {
+	private tokenizeArrays():any {
 		let index = 0;
-		const buildList = (tokens: any[]) => {
+		const buildList = (tokens: any[]):any => {
 			let arr = [];
 			while (index < tokens.length) {
 				let c = tokens[index++];
@@ -102,7 +109,7 @@ export class TOKENIZER {
 	private makeToken(
 		token: Token | string | number,
 		type: TokenType,
-		args = null,
+		args: null | any = [],
 	) {
 		return args ? { token, type, args } : { token, type };
 	}
@@ -115,8 +122,7 @@ export class TOKENIZER {
 				result[i] = this.makeToken("~", TokenType.PUN);
 			}
 			if (latexBindings[token.token]) {
-				result[i] = this.makeToken(
-					latexBindings[token.token],
+				result[i] = this.makeToken(latexBindings[token.token],
 					TokenType.VAR,
 				);
 			}

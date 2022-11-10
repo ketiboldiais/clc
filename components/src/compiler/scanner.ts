@@ -19,14 +19,14 @@ export class SCANNER {
 	braces: number[];
 	scanningLatex: boolean;
 	constructor() {
-		this.current_lexeme;
+		this.current_lexeme = "";
 		this.cursor = 0;
-		this.length;
+		this.length = 0;
 		this.tokens = [];
 		this.parens = [0, 0];
 		this.brackets = [0, 0];
 		this.braces = [0, 0];
-		this.scanningLatex;
+		this.scanningLatex=false;
 	}
 	scan(source: string, latex: boolean): Scan {
 		this.scanningLatex = latex;
@@ -83,7 +83,7 @@ export class SCANNER {
 						break;
 					case "!":
 						token = this.match("=")
-							? this.makeToken(Token.BANG_EQUAL, TokenType.OP2, 8)
+							? this.makeToken(Token.BANG_EQUAL,TokenType.OP2,8)
 							: this.makeToken(Token.BANG, TokenType.OP1, 13);
 						break;
 					case "=":
@@ -221,7 +221,7 @@ export class SCANNER {
 	private isDigit(char: string) {
 		return encode(char) >= encode("0") && encode(char) <= encode("9");
 	}
-	private func(name: string) {
+	private func(name: string):any {
 		this.advance();
 		let parameters = [];
 		let type = TokenType.FUN;
@@ -301,7 +301,7 @@ export class SCANNER {
 	private makeToken(
 		token: Token | string | number,
 		type: TokenType,
-		args = null,
+		args: null | any | any[] = null,
 	) {
 		return args ? { token, type, args } : { token, type };
 	}

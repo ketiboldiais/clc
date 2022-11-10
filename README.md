@@ -5,11 +5,11 @@ This is a simple calculator using CSMParse to parse and evaluate mathematical ex
 ## DEL
 
 The `DEL` button removes the last inserted _character_, rather than 
-the last inserted _token_. Thus, inputting `cos(1)` and entering `DEL` will return `cos(1` rather.
+the last inserted _token_. Thus, inputting `cos(1)` and entering `DEL` will return `cos(1`.
 
 ## CLEAR
 
-The `CLEAR` button reset all input.
+The `CLEAR` button resets all input.
 
 ## Operations
 

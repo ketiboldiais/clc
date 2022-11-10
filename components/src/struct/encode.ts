@@ -1,5 +1,5 @@
 /* prettier-ignore */
-const charEncode = {
+const charEncode:any = {
 	" ": -1, "\\n": -1, "\\t": -1,
 	"\\r":-1,
 	"!": 33 , '"': 34  , "#":35   ,

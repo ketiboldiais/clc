@@ -13,12 +13,12 @@ export class PARSER {
 	out: string;
 	previous: any;
 	constructor() {
-		this.queue;
-		this.stack;
+		this.queue = new queue();
+		this.stack = [];
 		this.tokenizer = new TOKENIZER();
-		this.tokens;
+		this.tokens = [];
 		this.tokenLength = 0;
-		this.out;
+		this.out = "";
 	}
 	private parse(source: string, latex: boolean) {
 		this.queue = new queue();
@@ -138,7 +138,7 @@ export class PARSER {
 			this.queue.enqueue(operator);
 		}
 		let result: any[] = [];
-		let truthTable = [];
+		let truthTable:any[] = [];
 		let isbooleanResult = false;
 		while (this.queue.length() !== 0) {
 			let element = this.queue.dequeue();

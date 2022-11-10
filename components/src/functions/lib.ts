@@ -44,7 +44,7 @@ function matrixAdd(a: number[][], b: number[][]) {
 function generateTruthValues(vars: string[]) {
 	const varCount = vars.length;
 	let rows = 1 << varCount;
-	let results = [];
+	let results:any[] = [];
 	for (let i = 0; i < rows; i++) {
 		results.push({});
 		for (let j = 0; j < varCount; j++) {
@@ -58,7 +58,7 @@ function generateTruthValues(vars: string[]) {
 	return results;
 }
 
-export const lib = {
+export const lib:any = {
 	cos: (n: number) => Trig.cos(n),
 	sin: (n: number) => Trig.sin(n),
 	tan: (n: number) => Trig.tan(n),
@@ -77,9 +77,9 @@ export const lib = {
 	divides: (a: number, b: number) => NumOp2.div(a, b),
 	pow: (a: number, b: number) => NumOp2.pow(a, b),
 	sqrt: (a: number) => Maths.sqrt(a),
-	floor: (a: number) => Math.floor(parseFloat(a)),
-	ceil: (a: number) => Math.ceil(parseFloat(a)),
-	ln: (a: number) => Math.log(parseFloat(a)),
+	floor: (a: string) => Math.floor(parseFloat(a)),
+	ceil: (a: string) => Math.ceil(parseFloat(a)),
+	ln: (a: string) => Math.log(parseFloat(a)),
 
 	eq: (a: number, b: number) => NumCmp.eq(a, b),
 	neq: (a: number, b: number) => NumCmp.neq(a, b),

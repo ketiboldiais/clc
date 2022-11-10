@@ -1,4 +1,4 @@
-export const latexBindings = {
+export const latexBindings: any = {
 	equal: "=",
 	add: "+",
 	minus: "-",

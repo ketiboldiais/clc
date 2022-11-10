@@ -9,14 +9,14 @@ import { Csm } from '../components/src'
 export default function Home() {
   const [calc,setCalc] = useState("");
   const [result,setResult] = useState("");
-  const updateCalc = (value) => {
+  const updateCalc = (value:any):any => {
     setCalc(calc + value);
     setResult(calc + value);
   }
-  const evalExpression = (value) => {
+  const evalExpression = (value:any):any => {
     setResult(`${Csm.eval(value)}`);
   }
-  const reset = () => {
+  const reset = ():any => {
     if (calc == '') {
       return;
     }
