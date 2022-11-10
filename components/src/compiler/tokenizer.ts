@@ -12,8 +12,8 @@ export class TOKENIZER {
 	constructor() {
 		this.scanner = new SCANNER();
 		this.scan = [];
-		this.tokenList = this.scan.tokens;
-		this.tokenLength = this.tokenList.length;
+		this.tokenList = [];
+		this.tokenLength = 0;
 		this.asLatex = false;
 	}
 	
